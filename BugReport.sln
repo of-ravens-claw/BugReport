@@ -1,7 +1,7 @@
 
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugReport", "BugReport.csproj", "{CE685221-77CB-425A-B9DC-60FFC9D3B058}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugReport", "BugReport\BugReport.csproj", "{CE685221-77CB-425A-B9DC-60FFC9D3B058}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
