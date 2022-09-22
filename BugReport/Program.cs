@@ -18,59 +18,62 @@ namespace BugReport
                 Environment.Exit(0); //Application.Exit doesn't work for some reason.
             }
 
+
+
             try
             {
-                Program.retString.AppendLine("———— ScriptHookVDotNet.log ————");
-                Program.retString.AppendLine(File.ReadAllText("ScriptHookVDotNet.log"));
+                retString.AppendLine("———— ScriptHookVDotNet.log ————");
+                retString.AppendLine(File.ReadAllText("ScriptHookVDotNet.log"));
             }
             catch (FileNotFoundException)
             {
-                Program.retString.AppendLine("FILE NOT FOUND: ScriptHookVDotNet.log");
+                retString.AppendLine("FILE NOT FOUND: ScriptHookVDotNet.log");
             }
             finally
             {
-                Program.retString.AppendLine();
+                retString.AppendLine();
             }
 
             try
             {
-                Program.retString.AppendLine("———— ScriptHookV.log ————");
-                Program.retString.AppendLine(File.ReadAllText("ScriptHookV.log"));
+                retString.AppendLine("———— ScriptHookV.log ————");
+                retString.AppendLine(File.ReadAllText("ScriptHookV.log"));
             }
             catch (FileNotFoundException)
             {
-                Program.retString.AppendLine("FILE NOT FOUND: ScriptHookV.log");
+                retString.AppendLine("FILE NOT FOUND: ScriptHookV.log");
             }
             finally
             {
-                Program.retString.AppendLine();
+                retString.AppendLine();
             }
 
             try
             {
-                Program.retString.AppendLine("———— SETTINGS.INI ————");
-                Program.retString.AppendLine(File.ReadAllText("Scripts\\BackToTheFutureV\\settings.ini"));
+                retString.AppendLine("———— SETTINGS.INI ————");
+                retString.AppendLine(File.ReadAllText("Scripts\\BackToTheFutureV\\settings.ini"));
             }
             catch (DirectoryNotFoundException)
             {
-                Program.retString.AppendLine(@"FOLDER NOT FOUND: Scripts\BackToTheFutureV");
+                retString.AppendLine(@"FOLDER NOT FOUND: Scripts\BackToTheFutureV");
                 Console.WriteLine("Is the mod even installed?");
             }
             catch (FileNotFoundException)
             {
-                Program.retString.AppendLine("FILE NOT FOUND: settings.ini");
+                retString.AppendLine("FILE NOT FOUND: settings.ini");
             }
 
             finally
             {
-                Program.retString.AppendLine();
+                retString.AppendLine();
             }
 
-            Program.retString.AppendLine("———— FILES ————");
+            retString.AppendLine("———— FILES ————");
             foreach (string file in Directory.GetFiles(".\\", "*", SearchOption.AllDirectories))
-            Program.retString.AppendLine(file.Replace(".\\", ""));
-            Program.retString.AppendLine();
-            File.WriteAllText(string.Format(".\\BUGREPORT_{0:yyyy-MM-dd_HH-mm-ss}.txt", (object)DateTime.Now), Program.retString.ToString());
+            retString.AppendLine(file.Replace(".\\", ""));
+            retString.AppendLine();
+            // TO-DO: Stop logging the following folders: ReadMe, Redistribuitables, _Installer, CommonRedist
+            File.WriteAllText(string.Format(".\\BUGREPORT_{0:yyyy-MM-dd_HH-mm-ss}.txt", DateTime.Now), retString.ToString());
         }
     }
 }
