@@ -16,7 +16,7 @@ namespace BugReport
             if (!File.Exists("GTA5.exe"))
             {
                 MessageBox.Show("Please place this .exe file in your Grand Theft Auto V directory, then try again.", "GTA5.exe not found", MessageBoxButtons.OK, MessageBoxIcon.Error); //Somehow our users are stupid enough to not understand simple instructions.
-                Environment.Exit(0); //Application.Exit didn't work for some reason.
+                return;
             }
 
             var verInfo = FileVersionInfo.GetVersionInfo(Path.Combine(Environment.CurrentDirectory, "GTA5.exe"));
